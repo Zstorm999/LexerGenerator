@@ -6,8 +6,8 @@ include(ExternalProject)
 ExternalProject_Add(googletest
   GIT_REPOSITORY    https://github.com/google/googletest.git
   GIT_TAG           master
-  SOURCE_DIR        "G:/prog_perso/C++/LexerGenerator/build/googletest-src"
-  BINARY_DIR        "G:/prog_perso/C++/LexerGenerator/build/googletest-build"
+  SOURCE_DIR        "D:/Progammation perso/C++/Projects/LexerGenerator/build/googletest-src"
+  BINARY_DIR        "D:/Progammation perso/C++/Projects/LexerGenerator/build/googletest-build"
   CONFIGURE_COMMAND ""
   BUILD_COMMAND     ""
   INSTALL_COMMAND   ""
