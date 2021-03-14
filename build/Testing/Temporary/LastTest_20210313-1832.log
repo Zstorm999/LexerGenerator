@@ -1,0 +1,62 @@
+Start testing: Mar 13 21:06 Paris, Madrid
+----------------------------------------------------------
+1/1 Testing: LexerGenerator_test
+1/1 Test: LexerGenerator_test
+Command: "G:/prog_perso/C++/LexerGenerator/build/TestBuild.exe"
+Directory: G:/prog_perso/C++/LexerGenerator/build
+"LexerGenerator_test" start time: Mar 13 21:06 Paris, Madrid
+Output:
+----------------------------------------------------------
+Running main() from G:\prog_perso\C++\LexerGenerator\build\googletest-src\googletest\src\gtest_main.cc
+[==========] Running 7 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 7 tests from SimpleDFATest
+[ RUN      ] SimpleDFATest.emptyString
+[       OK ] SimpleDFATest.emptyString (0 ms)
+[ RUN      ] SimpleDFATest.IfStatement
+[       OK ] SimpleDFATest.IfStatement (0 ms)
+[ RUN      ] SimpleDFATest.ForStatement
+[       OK ] SimpleDFATest.ForStatement (0 ms)
+[ RUN      ] SimpleDFATest.VariableNameLettersLower
+G:\prog_perso\C++\LexerGenerator\test\simpleDFATest.cpp:24: Failure
+Expected equality of these values:
+  a.Matches("abcdefghijklmnopqrstuvwxyz")
+    Which is: ""
+  "id"
+[  FAILED  ] SimpleDFATest.VariableNameLettersLower (0 ms)
+[ RUN      ] SimpleDFATest.VariableNameLettersUpper
+G:\prog_perso\C++\LexerGenerator\test\simpleDFATest.cpp:29: Failure
+Expected equality of these values:
+  a.Matches("ABCDEFGHIJKLMONPQRSTUVWXYZ")
+    Which is: ""
+  "id"
+[  FAILED  ] SimpleDFATest.VariableNameLettersUpper (0 ms)
+[ RUN      ] SimpleDFATest.VariableName
+G:\prog_perso\C++\LexerGenerator\test\simpleDFATest.cpp:34: Failure
+Expected equality of these values:
+  a.Matches("var1")
+    Which is: ""
+  "id"
+[  FAILED  ] SimpleDFATest.VariableName (0 ms)
+[ RUN      ] SimpleDFATest.InvalidName
+[       OK ] SimpleDFATest.InvalidName (0 ms)
+[----------] 7 tests from SimpleDFATest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 7 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 4 tests.
+[  FAILED  ] 3 tests, listed below:
+[  FAILED  ] SimpleDFATest.VariableNameLettersLower
+[  FAILED  ] SimpleDFATest.VariableNameLettersUpper
+[  FAILED  ] SimpleDFATest.VariableName
+
+ 3 FAILED TESTS
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Failed.
+"LexerGenerator_test" end time: Mar 13 21:06 Paris, Madrid
+"LexerGenerator_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Mar 13 21:06 Paris, Madrid

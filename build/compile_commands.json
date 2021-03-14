@@ -1,0 +1,42 @@
+[
+{
+  "directory": "G:/prog_perso/C++/LexerGenerator/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/AppBuild.dir/includes_CXX.rsp -g -o CMakeFiles\\AppBuild.dir\\main.cpp.obj -c G:\\prog_perso\\C++\\LexerGenerator\\main.cpp",
+  "file": "G:/prog_perso/C++/LexerGenerator/main.cpp"
+},
+{
+  "directory": "G:/prog_perso/C++/LexerGenerator/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/AppBuild.dir/includes_CXX.rsp -g -o CMakeFiles\\AppBuild.dir\\source\\simpleDFA.cpp.obj -c G:\\prog_perso\\C++\\LexerGenerator\\source\\simpleDFA.cpp",
+  "file": "G:/prog_perso/C++/LexerGenerator/source/simpleDFA.cpp"
+},
+{
+  "directory": "G:/prog_perso/C++/LexerGenerator/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/TestBuild.dir/includes_CXX.rsp -g -o CMakeFiles\\TestBuild.dir\\source\\simpleDFA.cpp.obj -c G:\\prog_perso\\C++\\LexerGenerator\\source\\simpleDFA.cpp",
+  "file": "G:/prog_perso/C++/LexerGenerator/source/simpleDFA.cpp"
+},
+{
+  "directory": "G:/prog_perso/C++/LexerGenerator/build",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/TestBuild.dir/includes_CXX.rsp -g -o CMakeFiles\\TestBuild.dir\\test\\simpleDFATest.cpp.obj -c G:\\prog_perso\\C++\\LexerGenerator\\test\\simpleDFATest.cpp",
+  "file": "G:/prog_perso/C++/LexerGenerator/test/simpleDFATest.cpp"
+},
+{
+  "directory": "G:/prog_perso/C++/LexerGenerator/build/googletest-build/googlemock",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/gmock.dir/includes_CXX.rsp -g -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles\\gmock.dir\\src\\gmock-all.cc.obj -c G:\\prog_perso\\C++\\LexerGenerator\\build\\googletest-src\\googlemock\\src\\gmock-all.cc",
+  "file": "G:/prog_perso/C++/LexerGenerator/build/googletest-src/googlemock/src/gmock-all.cc"
+},
+{
+  "directory": "G:/prog_perso/C++/LexerGenerator/build/googletest-build/googlemock",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/gmock_main.dir/includes_CXX.rsp -g -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj -c G:\\prog_perso\\C++\\LexerGenerator\\build\\googletest-src\\googlemock\\src\\gmock_main.cc",
+  "file": "G:/prog_perso/C++/LexerGenerator/build/googletest-src/googlemock/src/gmock_main.cc"
+},
+{
+  "directory": "G:/prog_perso/C++/LexerGenerator/build/googletest-build/googletest",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/gtest.dir/includes_CXX.rsp -g -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles\\gtest.dir\\src\\gtest-all.cc.obj -c G:\\prog_perso\\C++\\LexerGenerator\\build\\googletest-src\\googletest\\src\\gtest-all.cc",
+  "file": "G:/prog_perso/C++/LexerGenerator/build/googletest-src/googletest/src/gtest-all.cc"
+},
+{
+  "directory": "G:/prog_perso/C++/LexerGenerator/build/googletest-build/googletest",
+  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-P\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/gtest_main.dir/includes_CXX.rsp -g -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj -c G:\\prog_perso\\C++\\LexerGenerator\\build\\googletest-src\\googletest\\src\\gtest_main.cc",
+  "file": "G:/prog_perso/C++/LexerGenerator/build/googletest-src/googletest/src/gtest_main.cc"
+}
+]
