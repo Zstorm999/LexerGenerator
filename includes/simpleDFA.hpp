@@ -7,22 +7,9 @@
 #include <iterator>
 #include <iostream>
 
+#include "transitions.hpp"
+
 namespace DFA{
-
-    class TransitionFunction{
-    public:
-
-        TransitionFunction();
-
-        void addTransition(int start, int end, char symbol);
-
-        int operator ()(int startState, char symbol);
-
-    //private:    
-        std::map<std::pair<int, char>, int> transition;
-
-    };
-
 
     class Automaton{
     public:
@@ -30,13 +17,6 @@ namespace DFA{
         Automaton();
 
         std::string Matches(std::string str);
-
-        void showMap(){
-            for(auto i : move.transition){
-                std::cout << "(" << i.first.first << ", " <<  i.first.second << "), " << i.second << "\n";
-            }
-        }
-
     private:
         
         std::string isFinal(int state) {
@@ -47,7 +27,7 @@ namespace DFA{
         }
 
         int* states;
-        TransitionFunction move;
+        std::map<int, Transitions> move;
     };
 }
 
