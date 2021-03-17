@@ -32,7 +32,8 @@ set(SRCS
     source/transitions.cpp)
 
 set(TESTSRCS 
-    test/simpleDFATest.cpp)
+    test/simpleDFATest.cpp
+    test/transitionsTest.cpp)
 
 set(HEADERS
     includes/simpleDFA.hpp

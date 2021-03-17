@@ -32,6 +32,8 @@ TEST(SimpleDFATest, VariableNameLettersUpper){
 TEST(SimpleDFATest, VariableName){
     Automaton a;
     ASSERT_EQ(a.Matches("var1"), "id");
+    ASSERT_EQ(a.Matches("_variable"), "id");
+    ASSERT_EQ(a.Matches("_____"), "id");
 }
 
 TEST(SimpleDFATest, InvalidName){

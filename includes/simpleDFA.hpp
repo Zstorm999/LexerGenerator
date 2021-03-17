@@ -22,12 +22,13 @@ namespace DFA{
         std::string isFinal(int state) {
             if(state == 2) return "if";
             if(state == 4) return "for";
+            if(state == 5) return "id";
 
             return "";
         }
 
         int* states;
-        std::map<int, Transitions> move;
+        std::map<int, Transitions> transition;
     };
 }
 
