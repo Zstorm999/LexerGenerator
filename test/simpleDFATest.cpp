@@ -34,11 +34,11 @@ TEST(SimpleDFATest, VariableName){
     ASSERT_EQ(a.Matches("var1"), "id");
     ASSERT_EQ(a.Matches("_variable"), "id");
     ASSERT_EQ(a.Matches("_____"), "id");
+    ASSERT_EQ(a.Matches("ifasda"), "id");
+    ASSERT_EQ(a.Matches("forqsq546"), "id");
 }
 
 TEST(SimpleDFATest, InvalidName){
     Automaton a;
     ASSERT_EQ(a.Matches("1var"), "");
-    ASSERT_EQ(a.Matches("iffif"), "");
-    ASSERT_EQ(a.Matches("forrqsd"), "");
 }

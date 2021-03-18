@@ -16,7 +16,9 @@ Automaton::Automaton():
 
     transition[0].AddTransition("a-eg-hj-zA-Z_", 5);
     transition[1].AddTransition("a-eg-np-zA-Z_$0-9", 5);
+    transition[2].AddTransition("a-zA-Z_$0-9", 5);
     transition[3].AddTransition("a-qs-zA-Z_$0-9", 5);
+    transition[4].AddTransition("a-zA-Z0-9_$", 5);
     transition[5].AddTransition("a-zA-Z0-9_$", 5);
 
 
