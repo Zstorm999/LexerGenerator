@@ -1,9 +1,11 @@
 #include "simpleDFA.hpp"
 
 using namespace DFA;
+using namespace std;
 
 Automaton::Automaton():
-    transition()
+    transition(),
+    finalStates()
 {
     transition[0].AddTransition('i', 1);
     transition[1].AddTransition('f', 2);
@@ -16,15 +18,24 @@ Automaton::Automaton():
     transition[1].AddTransition("a-eg-np-zA-Z_$0-9", 5);
     transition[3].AddTransition("a-qs-zA-Z_$0-9", 5);
     transition[5].AddTransition("a-zA-Z0-9_$", 5);
+
+
+    finalStates[2] = "if";
+    finalStates[4] = "for";
+    finalStates[5] = "id";
 }
 
-std::string Automaton::Matches(std::string str){
+string Automaton::Matches(string str) const{
 
     int currentState = 0;
     for(auto &c : str){
         
         //update current state
-        currentState = transition[currentState].Move(c);
+        auto p = transition.find(currentState);
+        if(p!= transition.end())
+            currentState = p->second.Move(c);
+        else 
+            return "";
 
         //a state of -1 means no transition was found
         if(currentState == -1) return "";
@@ -32,4 +43,16 @@ std::string Automaton::Matches(std::string str){
 
     return isFinal(currentState);
 
+}
+
+string Automaton::toString() const{
+    stringstream ss;
+
+    ss << "Automaton\n\nFinal States\n";
+
+    for(auto i : finalStates){
+        ss << i.first << " : \"" << i.second << "\"\n";
+    }
+    
+    return ss.str();
 }

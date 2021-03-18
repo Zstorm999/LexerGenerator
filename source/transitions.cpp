@@ -57,15 +57,16 @@ void Transitions::AddTransition(string pattern, int finalState){
 }
 
 
-int Transitions::Move(char letter){
+int Transitions::Move(char letter) const{
 
     //we need to pass through all the intervals...
     //but there should only be a fiew of them, so that's not a big problem
-    for(auto p = intervalTransition.begin(); p != intervalTransition.end(); p++){
-        if(p->first.Contains(letter)) 
-            return p->second;
+    if(!intervalTransition.empty()){
+        for(auto p : intervalTransition){
+            if(p.first.Contains(letter)) 
+                return p.second;
+        }
     }
-
 
     auto posInLetters = letterTransition.find(letter);
     if(posInLetters != letterTransition.end()){

@@ -17,7 +17,7 @@ namespace DFA{
         void AddTransition(char letter, int finalState);
         void AddTransition(std::string pattern, int finalState);
 
-        int Move(char letter);
+        int Move(char letter) const;
 
     private:
 

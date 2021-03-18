@@ -11,5 +11,8 @@ int main(void){
     std::cout << "\"for\" matches: " << a.Matches("for") << "\n";
     std::cout << "\"iffir\" matches: " << a.Matches("iffir") << "\n";
 
+
+    std::cout << "\n" <<a << "\n";
+
     return 0;
 }

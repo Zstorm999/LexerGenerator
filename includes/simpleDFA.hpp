@@ -2,10 +2,10 @@
 #define _SIMPLE_DFA_H
 
 #include <string>
-#include <utility>
 #include <map>
-#include <iterator>
+#include <sstream>
 #include <iostream>
+
 
 #include "transitions.hpp"
 
@@ -16,20 +16,30 @@ namespace DFA{
 
         Automaton();
 
-        std::string Matches(std::string str);
+        std::string Matches(std::string str) const;
+
+        std::string toString() const;
+
     private:
         
-        std::string isFinal(int state) {
-            if(state == 2) return "if";
-            if(state == 4) return "for";
-            if(state == 5) return "id";
-
+        inline std::string isFinal(int state) const{
+            
+            auto p = finalStates.find(state);
+            if( p != finalStates.end()){
+                return p->second;
+            }
             return "";
         }
 
-        int* states;
+        std::map<int, std::string> finalStates;
         std::map<int, Transitions> transition;
     };
+
+    inline std::ostream& operator<<(std::ostream& os, Automaton const& a){ 
+        os << a.toString();
+        return os;
+    }
+
 }
 
 #endif //_SIMPLE_DFA_H
