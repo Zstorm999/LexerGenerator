@@ -3,6 +3,8 @@
 
 #include <string>
 #include <map>
+#include <ostream>
+#include <sstream>
 
 namespace DFA{
 
@@ -13,6 +15,8 @@ namespace DFA{
         class _Interval;
 
         Transitions();
+
+        std::string toString() const;
 
         void AddTransition(char letter, int finalState);
         void AddTransition(std::string pattern, int finalState);
@@ -37,6 +41,12 @@ namespace DFA{
 
         }
 
+        inline std::string toString() const {
+            std::stringstream ss;
+            ss << "[" << start << "; " << end << "]";
+            return ss.str();
+        }
+
         inline bool Contains(char rune) const{
             if( rune >= start && rune <= end) return true;
             return false;
@@ -51,7 +61,9 @@ namespace DFA{
         return i1._Less(i2);
     }
     
-    
+    inline std::ostream& operator<<(std::ostream& os, Transitions t){
+        return os << t.toString();
+    }
 
 }
 

@@ -1,6 +1,8 @@
 #include "gtest/gtest.h"
 #include "transitions.hpp"
 
+
+
 TEST(TransitionsTest, singleLetterChar){
     DFA::Transitions t;
     t.AddTransition('a', 1);
@@ -65,4 +67,11 @@ TEST(TransitionsTest, variableNameRegex){
     ASSERT_EQ(t.Move('_'), 1);
     ASSERT_EQ(t.Move('$'), 1);
     ASSERT_EQ(t.Move('4'), 1);
+}
+
+TEST(TransitionsTest, emptyTransition){
+    DFA::Transitions t;
+
+
+    ASSERT_EQ(t.Move('a'), -1);
 }

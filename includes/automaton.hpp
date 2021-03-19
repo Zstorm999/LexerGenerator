@@ -16,9 +16,19 @@ namespace DFA{
 
         Automaton();
 
-        std::string Matches(std::string str) const;
+        std::string Matches(std::string const& str) const;
 
         std::string toString() const;
+
+    protected:
+
+        inline void addFinalState(int state, std::string token){
+            finalStates[state] = token;
+        }
+
+        inline void addTransition(int start, int end, std::string pattern){
+            transition[start].AddTransition(pattern, end);
+        }
 
     private:
         

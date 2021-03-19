@@ -1,5 +1,6 @@
 #include <iostream>
-#include "simpleDFA.hpp"
+#include <fstream>
+#include "automaton.hpp"
 
 int main(void){
 
@@ -10,7 +11,7 @@ int main(void){
     std::cout << "\"\" matches: " << a.Matches("")  << "\n";
     std::cout << "\"for\" matches: " << a.Matches("for") << "\n";
     std::cout << "\"iffir\" matches: " << a.Matches("iffir") << "\n";
-
+    std::fstream fs;
 
     std::cout << "\n" <<a << "\n";
 

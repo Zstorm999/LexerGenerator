@@ -10,6 +10,22 @@ Transitions::Transitions():
 
 }
 
+string Transitions::toString() const{
+    stringstream ss;
+
+    ss << "Simple letters transitions\n";
+    for(auto p : letterTransition){
+        ss << "\'"<< p.first <<"\' : " << p.second << "\n";
+    }
+
+    ss << "Interval transitions\n";
+    for(auto p : intervalTransition){
+        ss << p.first.toString() << " : " << p.second << "\n";
+    }
+
+    return ss.str();
+}
+
 void Transitions::AddTransition(char letter, int finalState){
     letterTransition[letter] = finalState;  
 }

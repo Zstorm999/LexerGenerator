@@ -28,7 +28,7 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
 project(LexerGenerator VERSION 0.1.0)
 
 set(SRCS 
-    source/simpleDFA.cpp
+    source/automaton.cpp
     source/transitions.cpp)
 
 set(TESTSRCS 
@@ -36,7 +36,7 @@ set(TESTSRCS
     test/transitionsTest.cpp)
 
 set(HEADERS
-    includes/simpleDFA.hpp
+    includes/automaton.hpp
     includes/transitions.hpp)
 
 include_directories(includes)
