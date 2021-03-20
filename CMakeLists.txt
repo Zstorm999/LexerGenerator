@@ -32,8 +32,10 @@ set(SRCS
     source/transitions.cpp)
 
 set(TESTSRCS 
+    test/testautomaton.hpp
     test/simpleDFATest.cpp
-    test/transitionsTest.cpp)
+    test/transitionsTest.cpp
+    test/ioDFATest.cpp)
 
 set(HEADERS
     includes/automaton.hpp

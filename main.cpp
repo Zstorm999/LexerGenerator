@@ -13,7 +13,7 @@ int main(void){
     std::cout << "\"iffir\" matches: " << a.Matches("iffir") << "\n";
     std::fstream fs;
 
-    std::cout << "\n" <<a << "\n";
+    std::cout << "\n" << a;
 
     return 0;
 }

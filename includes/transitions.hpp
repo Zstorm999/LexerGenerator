@@ -41,9 +41,9 @@ namespace DFA{
 
         }
 
-        inline std::string toString() const {
+        inline std::string ToString() const {
             std::stringstream ss;
-            ss << "[" << start << "; " << end << "]";
+            ss << start << "-" << end;
             return ss.str();
         }
 

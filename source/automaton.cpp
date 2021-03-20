@@ -7,7 +7,6 @@ Automaton::Automaton():
     transition(),
     finalStates()
 {
-    
 }
 
 string Automaton::Matches(string const& str) const{
@@ -31,19 +30,18 @@ string Automaton::Matches(string const& str) const{
 }
 
 string Automaton::toString() const{
-    stringstream ss;
+    ostringstream ss;
 
-    ss << "Automaton\n\nFinal States\n";
+    ss << finalStates.size() << "\n";
 
     for(auto i : finalStates){
-        ss << i.first << " : \"" << i.second << "\"\n";
+        ss << i.first << " : " << i.second << "\n";
     }
 
-    ss << "Transitions\n\n";
+    ss << transition.size() << "\n";
 
     for(auto p : transition){
-        ss << "From " << p.first << " : \n";
-        ss << p.second << "\n";
+        ss <<  p.first << "\n" << p.second;
     }
     
     return ss.str();

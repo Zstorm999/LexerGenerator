@@ -7,20 +7,24 @@ Transitions::Transitions():
     letterTransition(),
     intervalTransition()
 {
-
+    
 }
 
 string Transitions::toString() const{
     stringstream ss;
 
-    ss << "Simple letters transitions\n";
+    map<int, string> trans;
+
     for(auto p : letterTransition){
-        ss << "\'"<< p.first <<"\' : " << p.second << "\n";
+        trans[p.second] += p.first; 
     }
 
-    ss << "Interval transitions\n";
-    for(auto p : intervalTransition){
-        ss << p.first.toString() << " : " << p.second << "\n";
+    for(auto p: intervalTransition){
+        trans[p.second] += p.first.ToString();
+    }
+
+    for(auto p : trans){
+        ss << p.first << " : " << p.second <<"\n";
     }
 
     return ss.str();
