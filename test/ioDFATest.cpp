@@ -1,8 +1,10 @@
 #include "testautomaton.hpp"
 #include <gtest/gtest.h>
 #include <string>
+#include <fstream>
 
 using namespace std;
+
 
 TEST(IOAutomatonTest, emptyOutput){
     Automaton a;
@@ -14,6 +16,43 @@ TEST(IOAutomatonTest, emptyOutput){
 TEST(IOAutomatonTest, normalOutput){
     TestAutomaton a;
 
-    string correct("3\n2 : if\n4 : for\n5 : id\n6\n0\n1 : fi\n5 : _A-Za-eg-hj-z\n1\n2 : f\n3 : o\n5 : $_0-9A-Za-eg-np-z\n2\n5 : $_0-9A-Za-z\n3\n4 : r\n5 : $_0-9A-Za-qs-z\n4\n5 : $_0-9A-Za-z\n5\n5 : $_0-9A-Za-z\n");
+    ASSERT_EQ(a.toString(), TestAutomaton::ExpectedString());
+}
+
+TEST(IOAutomatonTest, emptyInput){
+    Automaton a;
+    string correct("0\n0\n");
+    stringstream ss(correct);
+
+    ss >> a;
     ASSERT_EQ(a.toString(), correct);
+}
+
+TEST(IOAutomatonTest, coherence){
+    TestAutomaton ta;
+    Automaton a;
+    stringstream ss;
+
+    ss << ta;
+    ss >> a;
+
+    ASSERT_EQ(ta.toString(), a.toString());
+    ASSERT_EQ(a.toString(), TestAutomaton::ExpectedString());
+}
+
+TEST(IOAutomatonTest, inputFromFile){
+    fstream fs;
+    Automaton a;
+    
+    try{
+        fs.open("testres/testAutomaton.txt", fstream::in);
+    }
+    catch(fstream::failure e){
+        cout << e.what();
+    }
+
+    fs >> a;
+    fs.close();
+
+    ASSERT_EQ(a.toString(), TestAutomaton::ExpectedString());
 }

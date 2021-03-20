@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.19)
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/..)
 
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
@@ -45,6 +47,7 @@ include_directories(includes)
 
 add_executable(AppBuild main.cpp ${SRCS} ${HEADERS})
 add_executable(TestBuild ${SRCS} ${TESTSRCS} ${HEADERS})
+
 
 target_link_libraries(TestBuild gtest_main)
 add_test(NAME LexerGenerator_test COMMAND TestBuild)

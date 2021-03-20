@@ -7,7 +7,7 @@ using namespace DFA;
 
 class TestAutomaton : public Automaton{
 public:    
-    TestAutomaton():
+    inline TestAutomaton():
         Automaton()
     {
         addTransition(0, 1, "i");
@@ -27,6 +27,10 @@ public:
         addFinalState(2, "if");
         addFinalState(4, "for");
         addFinalState(5, "id");
+    }
+
+    static std::string ExpectedString(){
+        return std::string("3\n2 : if\n4 : for\n5 : id\n6\n0 2\n1 : fi\n5 : _A-Za-eg-hj-z\n1 3\n2 : f\n3 : o\n5 : $_0-9A-Za-eg-np-z\n2 1\n5 : $_0-9A-Za-z\n3 2\n4 : r\n5 : $_0-9A-Za-qs-z\n4 1\n5 : $_0-9A-Za-z\n5 1\n5 : $_0-9A-Za-z\n");
     }
 };
 

@@ -16,9 +16,10 @@ namespace DFA{
 
         Automaton();
 
-        std::string Matches(std::string const& str) const;
-
         std::string toString() const;
+        std::istream& operator>>(std::istream& is);
+
+        std::string Matches(std::string const& str) const;
 
     protected:
 
@@ -48,6 +49,10 @@ namespace DFA{
     inline std::ostream& operator<<(std::ostream& os, Automaton const& a){ 
         os << a.toString();
         return os;
+    }
+
+    inline std::istream& operator>>(std::istream& is, Automaton& a){
+        return a.operator>>(is);
     }
 
 }

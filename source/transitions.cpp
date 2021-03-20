@@ -23,6 +23,7 @@ string Transitions::toString() const{
         trans[p.second] += p.first.ToString();
     }
 
+    ss << trans.size() << "\n";
     for(auto p : trans){
         ss << p.first << " : " << p.second <<"\n";
     }

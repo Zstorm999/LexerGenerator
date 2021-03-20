@@ -9,6 +9,54 @@ Automaton::Automaton():
 {
 }
 
+string Automaton::toString() const{
+    ostringstream ss;
+
+    ss << finalStates.size() << "\n";
+
+    for(auto i : finalStates){
+        ss << i.first << " : " << i.second << "\n";
+    }
+
+    ss << transition.size() << "\n";
+
+    for(auto p : transition){
+        ss <<  p.first << " " << p.second;
+    }
+    
+    return ss.str();
+}
+
+istream& Automaton::operator>>(istream& is){
+    
+    string tmp;
+    int nb;
+    is >> nb;
+
+    for(int i(0); i<nb; i++){
+        int state;
+        string token;
+        is >> state >> tmp >> token;
+
+        addFinalState(state, token);
+    }
+
+    is >> nb;
+    for(int i(0); i<nb; i++){
+        
+        int start, end, nbTrans;
+        string pattern;
+        is >> start >> nbTrans;
+        
+        for(int j(0); j<nbTrans; j++){
+            is >> end >> tmp >> pattern;
+            addTransition(start, end, pattern);
+        }
+    }
+
+    return is;
+}
+
 string Automaton::Matches(string const& str) const{
 
     int currentState = 0;
@@ -29,20 +77,4 @@ string Automaton::Matches(string const& str) const{
 
 }
 
-string Automaton::toString() const{
-    ostringstream ss;
 
-    ss << finalStates.size() << "\n";
-
-    for(auto i : finalStates){
-        ss << i.first << " : " << i.second << "\n";
-    }
-
-    ss << transition.size() << "\n";
-
-    for(auto p : transition){
-        ss <<  p.first << "\n" << p.second;
-    }
-    
-    return ss.str();
-}
