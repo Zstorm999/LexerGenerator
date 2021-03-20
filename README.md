@@ -2,7 +2,7 @@
 A C++ program that generates a lexer based on an input language.
 
 ## Input language
-You can not specify an input language at the time, this will be modified in th future.
+You can not specify an input language at the time, this will be modified in the future.
 
 ## Output and restoring DFA
 This projects works with internal DFA (Deterministic Finite Automata). You do not need to know what they are in order to use the generator, but you should know how they are stored in files: 
@@ -22,14 +22,14 @@ The format for transitions is:
 
     arrivalState : pattern
 
-If you need an exemple, the file [testAutomaton.txt](testres/testAutomaton.txt) provides one in a human readable format.
+If you need an example, the file [testAutomaton.txt](testres/testAutomaton.txt) provides one in a human readable format.
 
 Knowing this is not essential to use the project itself, but it can be if you need your own implementation of DFA, but you do not want to rewrite the complete generator (some algorithm inside can be pretty complicated...)
 
 # Run the project on your machine
 This project is provided only by its sources, but everything is present so that you can build it from scratch.
 
-All you will need is cmake, which you can quickly and simply install on any OS (google "How to install CMake", you'll find plenty of tutorials explaining it much better than I).
+All you will need is CMake, which you can quickly and simply install on any OS (google "How to install CMake", you'll find plenty of tutorials explaining it much better than I).
 
 There are different build that you can use for different purpose :
 
