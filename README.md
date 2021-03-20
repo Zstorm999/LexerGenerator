@@ -9,10 +9,10 @@ All you will need is cmake, which you can quickly and simply install on any OS (
 
 There are different build that you can use for different purpose :
 
-1. TestBuild, to run the different unit test and verify that your build works correctly  
-2. AppBuild, to run the app in the command line (you can specify which files to read from and write to)
+1. [TestBuild](#test-build), to run the different unit test and verify that your build works correctly  
+2. [AppBuild](#app-build), to run the app in the command line (you can specify which files to read from and write to)
 
-## Test Build
+## TestBuild
 The TestBuild app is used to run the unit tests included in the project. Building this target will include the gtest framework, but this framework is downloaded onto the build folder no matter what target you choose to build.
 
 You can build this target using the following commands:
@@ -25,7 +25,7 @@ You can build this target using the following commands:
 
 The target will be built at the root of the project.
 
-## App Build
+## AppBuild
 The AppBuild app is the main application, that you can run from the command line (it has no graphical interface !). No library is included in this executable, except for the C++ standard library. 
 
 You can build this target using the following commands:
