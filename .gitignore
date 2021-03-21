@@ -30,6 +30,8 @@
 *.exe
 *.out
 *.app
+TestBuild
+AppBuild
 
 #vscode
 .vscode/*
