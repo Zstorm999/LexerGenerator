@@ -5,14 +5,15 @@
 #include <map>
 #include <ostream>
 #include <sstream>
+#include <utility>
 
 namespace DFA{
+
+    
 
     class Transitions
     {
     public:
-        //nested class
-        class _Interval;
 
         Transitions();
 
@@ -24,42 +25,16 @@ namespace DFA{
         int Move(char letter) const;
 
     private:
+        typedef std::pair<char, char> Interval;
 
         //data members
         std::map<char, int> letterTransition;
-        std::map<_Interval, int> intervalTransition;
-    };
+        std::map<Interval, int> intervalTransition;
 
-    class  Transitions::_Interval
-    {
-        char start, end;
-    
-    public:
-        inline _Interval(char _start, char _end)
-            :start(_start), end(_end)
-        {
-
-        }
-
-        inline std::string ToString() const {
-            std::stringstream ss;
-            ss << start << "-" << end;
-            return ss.str();
-        }
-
-        inline bool Contains(char rune) const{
-            if( rune >= start && rune <= end) return true;
-            return false;
-        }
-
-        inline bool _Less(_Interval i){
-            return start < i.start;
+        inline bool contains(Interval i, char letter) const{
+            return letter >= i.first && letter <= i.second;
         }
     };
-
-    inline bool operator<(Transitions::_Interval i1, Transitions::_Interval i2){
-        return i1._Less(i2);
-    }
     
     inline std::ostream& operator<<(std::ostream& os, Transitions t){
         return os << t.toString();

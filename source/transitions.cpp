@@ -13,19 +13,19 @@ Transitions::Transitions():
 string Transitions::toString() const{
     stringstream ss;
 
-    map<int, string> trans;
+    map<int, stringstream> trans;
 
     for(auto p : letterTransition){
-        trans[p.second] += p.first; 
+        trans[p.second] << p.first; 
     }
 
     for(auto p: intervalTransition){
-        trans[p.second] += p.first.ToString();
+        trans[p.second] << p.first.first << "-" << p.first.second;
     }
 
     ss << trans.size() << "\n";
-    for(auto p : trans){
-        ss << p.first << " : " << p.second <<"\n";
+    for(auto p = trans.begin(); p != trans.end(); p++){
+        ss << p->first << " : " << p->second.str() <<"\n";
     }
 
     return ss.str();
@@ -53,7 +53,7 @@ void Transitions::AddTransition(string pattern, int finalState){
 
         //we need to add an interval
         if(prev == '-'){
-            _Interval inter(secondPrev, c);
+            Interval inter(secondPrev, c);
             intervalTransition[inter] = finalState;
             isFirst = true;
         }
@@ -84,7 +84,7 @@ int Transitions::Move(char letter) const{
     //but there should only be a fiew of them, so that's not a big problem
     if(!intervalTransition.empty()){
         for(auto p : intervalTransition){
-            if(p.first.Contains(letter)) 
+            if(contains(p.first, letter)) 
                 return p.second;
         }
     }
