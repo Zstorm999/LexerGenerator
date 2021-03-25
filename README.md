@@ -65,6 +65,8 @@ You can build this target using the following commands:
 
 The target will be built at the root of the project.
 
+Warning : This build is not finished yet, it will compile but is useless at the time.
+
 ## LibBuild
 This is "work in progress", there is currently no way to build the project as a library.
 
