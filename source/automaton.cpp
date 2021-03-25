@@ -9,6 +9,7 @@ Automaton::Automaton():
 {
 }
 
+
 string Automaton::toString() const{
     ostringstream ss;
 

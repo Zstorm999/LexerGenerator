@@ -75,3 +75,66 @@ TEST(TransitionsTest, emptyTransition){
 
     ASSERT_EQ(t.Move('a'), -1);
 }
+
+TEST(TransitionsTest, compactCleanIntervals){
+    DFA::Transitions t;
+    t.AddTransition("a-z", 1);
+
+    t.Compact();
+
+    ASSERT_EQ(t.toString(), "0\n");
+}
+
+TEST(TransitionsTest, compactInterval){
+    DFA::Transitions t;
+    t.AddTransition('a', 1);
+    t.AddTransition('b', 1);
+    t.AddTransition('c', 1);
+
+    t.Compact();
+    
+    ASSERT_EQ(t.toString(), "1\n1 : a-c\n");
+}
+
+TEST(TransitionsTest, compactNoInterval){
+    DFA::Transitions t;
+    t.AddTransition('a', 1);
+    t.AddTransition('c', 1);
+    t.AddTransition('K', 1);
+
+    t.Compact();
+
+    ASSERT_EQ(t.toString(), "1\n1 : Kac\n");
+}
+
+
+
+TEST(TransitionsTest, compactDifferentEnd){
+    DFA::Transitions t;
+    t.AddTransition('a', 1);
+    t.AddTransition('b', 2);
+    t.AddTransition('c', 1);
+
+    t.Compact();
+    
+    ASSERT_EQ(t.toString(), "2\n1 : ac\n2 : b\n");
+
+
+}
+
+
+
+TEST(TransitionsTest, compactMixed){
+    DFA::Transitions t;
+    t.AddTransition('a', 1);
+    t.AddTransition('b', 1);
+    t.AddTransition('c', 1);
+    t.AddTransition('d', 1);
+    t.AddTransition('e', 2);
+    t.AddTransition('K', 1);
+
+    t.Compact();
+    
+    ASSERT_EQ(t.toString(), "2\n1 : Ka-d\n2 : e\n");
+}
+

@@ -33,6 +33,10 @@ namespace DFA{
 
     private:
         
+
+        std::map<int, std::string> finalStates;
+        std::map<int, Transitions> transition;
+
         inline std::string isFinal(int state) const{
             
             auto p = finalStates.find(state);
@@ -42,8 +46,6 @@ namespace DFA{
             return "";
         }
 
-        std::map<int, std::string> finalStates;
-        std::map<int, Transitions> transition;
     };
 
     inline std::ostream& operator<<(std::ostream& os, Automaton const& a){ 
