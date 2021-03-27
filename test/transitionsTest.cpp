@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "transitions.hpp"
 
-
+//Transitions Test
 
 TEST(TransitionsTest, singleLetterChar){
     DFA::Transitions t;
@@ -76,7 +76,9 @@ TEST(TransitionsTest, emptyTransition){
     ASSERT_EQ(t.Move('a'), -1);
 }
 
-TEST(TransitionsTest, compactCleanIntervals){
+//Compact Test
+
+TEST(CompactTransitionTest, cleanIntervals){
     DFA::Transitions t;
     t.AddTransition("a-z", 1);
 
@@ -85,7 +87,7 @@ TEST(TransitionsTest, compactCleanIntervals){
     ASSERT_EQ(t.toString(), "0\n");
 }
 
-TEST(TransitionsTest, compactInterval){
+TEST(CompactTransitionTest, interval){
     DFA::Transitions t;
     t.AddTransition('a', 1);
     t.AddTransition('b', 1);
@@ -96,7 +98,7 @@ TEST(TransitionsTest, compactInterval){
     ASSERT_EQ(t.toString(), "1\n1 : a-c\n");
 }
 
-TEST(TransitionsTest, compactNoInterval){
+TEST(CompactTransitionTest, noInterval){
     DFA::Transitions t;
     t.AddTransition('a', 1);
     t.AddTransition('c', 1);
@@ -109,7 +111,7 @@ TEST(TransitionsTest, compactNoInterval){
 
 
 
-TEST(TransitionsTest, compactDifferentEnd){
+TEST(CompactTransitionTest, differentDestination){
     DFA::Transitions t;
     t.AddTransition('a', 1);
     t.AddTransition('b', 2);
@@ -124,7 +126,7 @@ TEST(TransitionsTest, compactDifferentEnd){
 
 
 
-TEST(TransitionsTest, compactMixed){
+TEST(CompactTransitionTest, mixed){
     DFA::Transitions t;
     t.AddTransition('a', 1);
     t.AddTransition('b', 1);
