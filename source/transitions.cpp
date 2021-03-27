@@ -118,4 +118,58 @@ void Transitions::Compact(){
 
     delete intervalTransition;
     intervalTransition = new map<Interval, int>;
+
+    map<char, int>::iterator p = letterTransition->begin();
+    map<char, int>::iterator pNext;
+
+    loop:
+
+    while(p != letterTransition->end()){
+        
+        //we need to find if the letter could fit in an already existing interval
+        for(auto it = intervalTransition->begin(); it != intervalTransition->end(); it++){
+            
+            if(it->second == p->second){
+                //two possible cases : after, not related
+                //before and inside are not possible since values are evaluated in ascending order
+                Interval i = it->first;
+                char letter = p->first;
+
+                if(letter == (i.second +1)){
+                    //we need to update the interval
+                    intervalTransition->erase(it);
+                    i.second++;
+                    (*intervalTransition)[i] = p->second;
+                    //no ned to continue looping, no other interval will fit
+
+                    p = letterTransition->erase(p);
+
+                    goto loop;
+                }
+            }
+        }
+
+        //if we get to this point, it means that no interval was found for the letter
+        //this is the point where we add a new interval, if the next letter has the same destination
+        pNext = p;
+        pNext++;
+
+        if(p->second == pNext->second && p->first == (pNext->first-1)){
+            
+            Interval i(p->first, pNext->first);
+            (*intervalTransition)[i] = p->second;
+
+            //remove both from letters
+            p = letterTransition->erase(p);
+            p = letterTransition->erase(p);
+        }
+        else{
+            p = pNext;
+        }
+
+        
+    }
+
+    //there is no need to check for interval overlap, since map stores elements in ascending order
+
 }

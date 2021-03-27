@@ -6,8 +6,8 @@
 #include <sstream>
 #include <iostream>
 
-
 #include "transitions.hpp"
+
 
 namespace DFA{
 

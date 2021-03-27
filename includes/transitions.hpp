@@ -9,7 +9,6 @@
 
 namespace DFA{
 
-    
 
     class Transitions
     {
@@ -35,7 +34,7 @@ namespace DFA{
         std::map<char, int>* letterTransition;
         std::map<Interval, int>* intervalTransition;
 
-        inline bool contains(Interval i, char letter) const{
+        inline bool contains(Interval const& i, char letter) const{
             return letter >= i.first && letter <= i.second;
         }
 
