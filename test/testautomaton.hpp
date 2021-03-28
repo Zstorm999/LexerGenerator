@@ -10,23 +10,23 @@ public:
     inline TestAutomaton():
         Automaton()
     {
-        addTransition(0, 1, "i");
-        addTransition(1, 2, "f");
+        AddTransition(0, 1, "i");
+        AddTransition(1, 2, "f");
 
-        addTransition(0, 1, "f");
-        addTransition(1, 3, "o");
-        addTransition(3, 4, "r");
+        AddTransition(0, 1, "f");
+        AddTransition(1, 3, "o");
+        AddTransition(3, 4, "r");
 
-        addTransition(0, 5, "a-eg-hj-zA-Z_");
-        addTransition(1, 5, "a-eg-np-zA-Z_$0-9");
-        addTransition(2, 5, "a-zA-Z_$0-9");
-        addTransition(3, 5, "a-qs-zA-Z_$0-9");
-        addTransition(4, 5, "a-zA-Z0-9_$");
-        addTransition(5, 5, "a-zA-Z0-9_$");
+        AddTransition(0, 5, "a-eg-hj-zA-Z_");
+        AddTransition(1, 5, "a-eg-np-zA-Z_$0-9");
+        AddTransition(2, 5, "a-zA-Z_$0-9");
+        AddTransition(3, 5, "a-qs-zA-Z_$0-9");
+        AddTransition(4, 5, "a-zA-Z0-9_$");
+        AddTransition(5, 5, "a-zA-Z0-9_$");
 
-        addFinalState(2, "if");
-        addFinalState(4, "for");
-        addFinalState(5, "id");
+        AddFinalState(2, "if");
+        AddFinalState(4, "for");
+        AddFinalState(5, "id");
     }
 
     static std::string ExpectedString(){

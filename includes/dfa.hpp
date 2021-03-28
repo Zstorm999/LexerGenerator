@@ -21,15 +21,14 @@ namespace DFA{
 
         std::string Matches(std::string const& str) const;
 
-    protected:
-
-        inline void addFinalState(int state, std::string token){
+        inline void AddFinalState(int state, std::string token){
             finalStates[state] = token;
         }
 
-        inline void addTransition(int start, int end, std::string pattern){
+        inline void AddTransition(int start, int end, std::string pattern){
             transition[start].AddTransition(pattern, end);
         }
+
 
     private:
         

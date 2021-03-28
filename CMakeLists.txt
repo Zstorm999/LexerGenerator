@@ -31,7 +31,8 @@ project(LexerGenerator VERSION 0.1.0)
 
 set(SRCS 
     source/dfa.cpp
-    source/dfatransition.cpp)
+    source/dfatransition.cpp
+    source/nfatree.cpp)
 
 set(TESTSRCS 
     test/testautomaton.hpp
@@ -41,7 +42,9 @@ set(TESTSRCS
 
 set(HEADERS
     includes/dfa.hpp
-    includes/dfatransition.hpp)
+    includes/dfatransition.hpp
+    includes/nfa.hpp
+    includes/nfatree.hpp)
 
 include_directories(includes)
 

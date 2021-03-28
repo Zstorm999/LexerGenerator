@@ -39,7 +39,7 @@ istream& Automaton::operator>>(istream& is){
         string token;
         is >> state >> tmp >> token;
 
-        addFinalState(state, token);
+        AddFinalState(state, token);
     }
 
     is >> nb;
@@ -51,7 +51,7 @@ istream& Automaton::operator>>(istream& is){
         
         for(int j(0); j<nbTrans; j++){
             is >> end >> tmp >> pattern;
-            addTransition(start, end, pattern);
+            AddTransition(start, end, pattern);
         }
     }
 
