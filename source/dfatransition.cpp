@@ -1,4 +1,4 @@
-#include "transitions.hpp"
+#include "dfatransition.hpp"
 
 using namespace DFA;
 using namespace std;

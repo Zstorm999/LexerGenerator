@@ -1,4 +1,4 @@
-#include "automaton.hpp"
+#include "dfa.hpp"
 
 using namespace DFA;
 using namespace std;

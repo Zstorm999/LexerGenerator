@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "transitions.hpp"
+#include "dfa.hpp"
 
 //Transitions Test
 

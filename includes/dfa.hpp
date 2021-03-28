@@ -6,7 +6,7 @@
 #include <sstream>
 #include <iostream>
 
-#include "transitions.hpp"
+#include "dfatransition.hpp"
 
 
 namespace DFA{

@@ -30,8 +30,8 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
 project(LexerGenerator VERSION 0.1.0)
 
 set(SRCS 
-    source/automaton.cpp
-    source/transitions.cpp)
+    source/dfa.cpp
+    source/dfatransition.cpp)
 
 set(TESTSRCS 
     test/testautomaton.hpp
@@ -40,8 +40,8 @@ set(TESTSRCS
     test/ioDFATest.cpp)
 
 set(HEADERS
-    includes/automaton.hpp
-    includes/transitions.hpp)
+    includes/dfa.hpp
+    includes/dfatransition.hpp)
 
 include_directories(includes)
 

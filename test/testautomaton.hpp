@@ -1,7 +1,7 @@
 #ifndef _TEST_AUTOMATON_H
 #define _TEST_AUTOMATON_H
 
-#include "automaton.hpp"
+#include "dfa.hpp"
 
 using namespace DFA;
 
