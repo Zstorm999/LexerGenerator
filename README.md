@@ -33,13 +33,13 @@ All you will need is CMake, which you can quickly and simply install on any OS (
 
 There are different build that you can use for different purpose :
 
-1. [TestBuild](#testbuild), to run the different unit test and verify that your build works correctly  
-2. [AppBuild](#appbuild), to run the app in the command line (you can specify which files to read from and write to)
-3. [LibBuild](#libbuild), to create the library that you can use later in other projects. (Work in progress)
+1. [TestBuild](#build-the-tests), to run the different unit test and verify that your build works correctly  
+2. [AppBuild](#build-the-app), to run the app in the command line (you can specify which files to read from and write to)
+3. [LexerGenerator](#build-the-library), to create the library that you can use later in other projects. (Work in progress)
 
 Once you have built the project, the executable can be found at the root of the project. You can simply run it from the command line, as there is no GUI version planned (and there is no need for one).
 
-## TestBuild
+## Build the tests
 The TestBuild app is used to run the unit tests included in the project. Building this target will include the gtest framework, but this framework is downloaded onto the build folder no matter what target you choose to build.
 
 You can build this target using the following commands:
@@ -52,7 +52,7 @@ You can build this target using the following commands:
 
 The target will be built at the root of the project.
 
-## AppBuild
+## Build the app
 The AppBuild app is the main application, that you can run from the command line (it has no graphical interface !). No library is included in this executable, except for the C++ standard library. 
 
 You can build this target using the following commands:
@@ -67,8 +67,18 @@ The target will be built at the root of the project.
 
 Warning : This build is not finished yet, it will compile but is useless at the time.
 
-## LibBuild
-This is "work in progress", there is currently no way to build the project as a library.
+## Build the library
+The library is built via the LexerGenerator rule. It is useful if you want to import the project in any other personal project.
+
+You can build the target using the following commands : 
+
+    mkdir build
+    cd build 
+    cmake ../
+    cmake --build . --target LexerGenerator
+    cd ..
+
+Once build, the library is available in the lib folder. Headers are located in the [includes](includes) folder.
 
 # Troubleshooting
 If you find yourself having any problem with the project, please raise an issue on github. I will try to address the problem as soon as I can.

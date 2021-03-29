@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/..)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../lib)
 
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
@@ -50,6 +52,8 @@ include_directories(includes)
 
 add_executable(AppBuild main.cpp ${SRCS} ${HEADERS})
 add_executable(TestBuild ${SRCS} ${TESTSRCS} ${HEADERS})
+
+add_library(LexerGenerator STATIC ${SRCS} ${HEADERS})
 
 
 target_link_libraries(TestBuild gtest_main)
