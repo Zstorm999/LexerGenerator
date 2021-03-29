@@ -29,7 +29,7 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
                  ${CMAKE_CURRENT_BINARY_DIR}/googletest-build
                  EXCLUDE_FROM_ALL)
 
-project(LexerGenerator VERSION 0.1.0)
+project(LexerGenerator VERSION 0.2.0)
 
 set(SRCS 
     source/dfa.cpp
