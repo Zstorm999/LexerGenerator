@@ -3,7 +3,7 @@
 using namespace NFA;
 using namespace std;
 
-Automaton::TreeNode::TreeNode(int _id, string token):
+TreeNode::TreeNode(int _id, string token):
     id(_id),
     finalToken(token),
     nextStates(vector<TreeTransition*>())
@@ -11,21 +11,21 @@ Automaton::TreeNode::TreeNode(int _id, string token):
     nextStates.reserve(20);
 }
 
-Automaton::TreeNode::~TreeNode(){
+TreeNode::~TreeNode(){
     
     for(auto it = nextStates.begin(); it != nextStates.end(); it++){
         delete *it;
     }
 }
 
-Automaton::TreeTransition::TreeTransition(char _letter):
+TreeTransition::TreeTransition(char _letter):
     letter(_letter),
     next(nullptr)
 {
 
 }
 
-Automaton::TreeTransition::~TreeTransition(){
+TreeTransition::~TreeTransition(){
     //delete only if not already null
     if(next != nullptr)
         delete next;

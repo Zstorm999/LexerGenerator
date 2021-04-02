@@ -4,11 +4,13 @@
 #include <vector>
 #include <string>
 
-#include "nfa.hpp"
 
 namespace NFA{
+
+    //forward declaration
+    struct TreeTransition;
     
-    struct Automaton::TreeNode{   
+    struct TreeNode{   
         TreeNode(int _id, std::string token="");
         ~TreeNode();
 
@@ -18,7 +20,7 @@ namespace NFA{
         std::vector<TreeTransition*> nextStates;
     };
 
-    struct Automaton::TreeTransition{
+    struct TreeTransition{
         TreeTransition(char letter = -1);
         ~TreeTransition();
 

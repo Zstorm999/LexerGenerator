@@ -17,10 +17,8 @@ namespace NFA{
         DFA::Automaton MakeDeterministic();
     
     private:
-        struct TreeNode;
-        struct TreeTransition;
 
-        TreeNode* states; 
+        NFA::TreeNode* states; 
     };
 
 }
