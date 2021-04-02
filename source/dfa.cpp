@@ -1,5 +1,7 @@
 #include "dfa.hpp"
 
+#include <sstream>
+
 using namespace DFA;
 using namespace std;
 

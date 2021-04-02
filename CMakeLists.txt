@@ -40,7 +40,8 @@ set(TESTSRCS
     test/testautomaton.hpp
     test/simpleDFATest.cpp
     test/transitionsTest.cpp
-    test/ioDFATest.cpp)
+    test/ioDFATest.cpp
+    test/treeTest.cpp)
 
 set(HEADERS
     includes/dfa.hpp
@@ -51,7 +52,7 @@ set(HEADERS
 include_directories(includes)
 
 add_executable(AppBuild main.cpp ${SRCS} ${HEADERS})
-add_executable(TestBuild ${SRCS} ${TESTSRCS} ${HEADERS})
+add_executable(TestBuild ${SRCS} ${HEADERS} ${TESTSRCS})
 
 add_library(LexerGenerator STATIC ${SRCS} ${HEADERS})
 

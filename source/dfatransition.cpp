@@ -1,5 +1,7 @@
 #include "dfatransition.hpp"
 
+#include <sstream>
+
 using namespace DFA;
 using namespace std;
 

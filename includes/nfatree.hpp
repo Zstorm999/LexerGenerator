@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <string>
-
+#include <set>
 
 namespace NFA{
 
@@ -27,6 +27,9 @@ namespace NFA{
         TreeNode* next;
         char letter;
     };
+
+
+    std::set<int> epsilonClosure(TreeNode const& n);
 
 }
 

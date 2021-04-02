@@ -2,8 +2,6 @@
 #define _SIMPLE_DFA_H
 
 #include <string>
-#include <map>
-#include <sstream>
 #include <iostream>
 
 #include "dfatransition.hpp"

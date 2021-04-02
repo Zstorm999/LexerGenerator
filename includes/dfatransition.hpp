@@ -4,7 +4,6 @@
 #include <string>
 #include <map>
 #include <ostream>
-#include <sstream>
 #include <utility>
 
 namespace DFA{

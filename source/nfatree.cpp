@@ -30,3 +30,11 @@ TreeTransition::~TreeTransition(){
     if(next != nullptr)
         delete next;
 }
+
+set<int> NFA::epsilonClosure(TreeNode const& t){
+    set<int> s;
+    s.insert(t.id);
+
+    return s;
+}
+
