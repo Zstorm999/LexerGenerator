@@ -18,7 +18,7 @@ namespace NFA{
     
     private:
 
-        NFA::TreeNode* states; 
+        NFA::Tree graph; 
     };
 
 }
