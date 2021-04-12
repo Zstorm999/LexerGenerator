@@ -29,7 +29,7 @@ namespace NFA{
         //returns the ID that will be attributed to the next node added in the tree
         int getNextID();
 
-        std::map<int, std::set<int>> epsilonClosure();
+        std::map<uint, std::set<uint>> epsilonClosure();
 
     private:
 
@@ -65,7 +65,7 @@ namespace NFA{
             message(msg)
         {}
 
-        const char* what(){
+        inline const char* what(){
             return message.c_str();
         } 
     

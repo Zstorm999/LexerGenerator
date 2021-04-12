@@ -1,6 +1,6 @@
 #include "nfatree.hpp"
 
-#include <exception>
+#include <algorithm>
 
 using namespace NFA;
 using namespace std;
@@ -82,15 +82,56 @@ void Tree::Node::addNext(int next, char letter){
 
 //-------------------------------------------------------------------
 
-map<int, set<int>> Tree::epsilonClosure(){
-    map<int, set<int>> m;
+map<uint, set<uint>> Tree::epsilonClosure(){
+    map<uint, set<uint>> m;
+    
+    bool stable;
 
-    /*for(auto n : nodes){
-        set<int> s;
-        s.insert(n.first);
+    //creating the base map: each closure contains at least its own element
+    for(uint i = 0; i< nodes.size(); i++){
+        set<uint> newSet = {i};
 
-        m[n.first] = s;
-    }*/
+        set<uint> epsilonNext;
+
+        for(auto it = nodes[i].nextStates.begin(); it != nodes[i].nextStates.end(); it++){
+            if(it->isEpsilon){
+                newSet.insert(it->nextID);
+            }
+        }
+
+        m.insert(make_pair(i, newSet));
+
+    }
+
+    std::set<uint> done;
+
+    do{
+
+        stable = true;
+        for(auto i = m.begin(); i != m.end(); i++){
+            
+            //no need to check already stable nodes
+            if(done.find(i->first) != done.end()) continue;
+
+            set<uint> newClosure = i->second;
+
+            for(auto j = i->second.begin(); j != i->second.end(); j++){
+
+                newClosure.insert(m[*j].begin(), m[*j].end());
+            }
+            
+
+            if(newClosure != i->second){
+                stable =  false;
+                m[i->first] = newClosure;
+            }
+            else{
+                done.insert(i->first);
+            }
+
+        }
+
+    }while(!stable);
 
     return m;
 }
