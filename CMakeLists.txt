@@ -44,13 +44,14 @@ set(TESTSRCS
     test/ioDFATest.cpp
     test/graphTest.cpp)
 
+set(INCLUDE_PATH includes/LexerGenerator)
 set(HEADERS
-    includes/dfa.hpp
-    includes/dfatransition.hpp
-    includes/nfa.hpp
-    includes/nfagraph.hpp)
+    ${INCLUDE_PATH}/dfa.hpp
+    ${INCLUDE_PATH}/dfatransition.hpp
+    ${INCLUDE_PATH}/nfa.hpp
+    ${INCLUDE_PATH}/nfagraph.hpp)
 
-include_directories(includes)
+include_directories(${INCLUDE_PATH})
 
 add_executable(AppBuild main.cpp ${SRCS} ${HEADERS})
 add_executable(TestBuild ${SRCS} ${HEADERS} ${TESTSRCS})
