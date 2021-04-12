@@ -42,7 +42,7 @@ set(TESTSRCS
     test/simpleDFATest.cpp
     test/transitionsTest.cpp
     test/ioDFATest.cpp
-    test/treeTest.cpp)
+    test/graphTest.cpp)
 
 set(HEADERS
     includes/dfa.hpp

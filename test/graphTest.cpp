@@ -5,7 +5,7 @@
 
 using namespace NFA;
 
-TEST(TreeTest, exceptions){
+TEST(GraphTest, exceptions){
 
     Graph t;
 
@@ -21,7 +21,7 @@ TEST(TreeTest, exceptions){
 }
 
 
-TEST(TreeTest, eclosureEmpty){
+TEST(GraphTest, eclosureEmpty){
     Graph t;
     t.addNode();
 
@@ -33,7 +33,7 @@ TEST(TreeTest, eclosureEmpty){
     ASSERT_EQ(closure[0], expected);
 }
 
-TEST(TreeTest, eclosureTrivial){
+TEST(GraphTest, eclosureTrivial){
 
     Graph t;
 
@@ -49,7 +49,7 @@ TEST(TreeTest, eclosureTrivial){
     }
 }
 
-TEST(TreeTest, eclosureSimple){
+TEST(GraphTest, eclosureSimple){
     Graph t;
     t.addNode();
     t.addNode();
@@ -69,7 +69,7 @@ TEST(TreeTest, eclosureSimple){
 
 }
 
-TEST(TreeTest, eclosureLoop){
+TEST(GraphTest, eclosureLoop){
 
     Graph t;
     t.addNode();
@@ -88,7 +88,7 @@ TEST(TreeTest, eclosureLoop){
     EXPECT_EQ(closure[1], expected1);
 }
 
-TEST(TreeTest, eclosureNested){
+TEST(GraphTest, eclosureNested){
     Graph t;
     t.addNode();
     t.addNode();
@@ -108,7 +108,7 @@ TEST(TreeTest, eclosureNested){
 
 }
 
-TEST(TreeTest, eclosureLoopNested){
+TEST(GraphTest, eclosureLoopNested){
     Graph t;
     t.addNode();
     t.addNode();
@@ -128,7 +128,7 @@ TEST(TreeTest, eclosureLoopNested){
     EXPECT_EQ(closure[2], expected[2]);
 }
 
-TEST(TreeTest, eclosureReal){
+TEST(GraphTest, eclosureReal){
     //Ex 2.2 from 'Basics of Compiler Design' by T. Mogensen
     Graph t;
     
@@ -162,6 +162,43 @@ TEST(TreeTest, eclosureReal){
 
     for(int i = 0; i<8; i++){
         EXPECT_EQ(closure[i], expected[i]);
+    }
+
+}
+
+TEST(GraphTest, merge){
+    Graph g1;
+
+    g1.addNode();
+    g1.addNode();
+
+    g1.addTransition(0, 1);
+
+    Graph g2;
+
+    g2.addNode();
+    g2.addNode();
+
+    g2.addTransition(0, 1);
+
+    Graph result = Graph::fuseNewBranch(g1, g2);
+
+    ASSERT_EQ(result.getNextID(), 4);
+
+    for(int i = 0; i< result.getNextID(); i++){
+        Graph::Node n = result.getNode(i);
+
+        if(i == 0){
+            EXPECT_EQ(n.nextStates[1].nextID, 2);
+        }
+
+        if(i%2 == 0){
+            EXPECT_EQ(n.nextStates[0].nextID, i+1);
+        }
+        else{
+            EXPECT_EQ(n.nextStates.size(), 0);
+        }
+
     }
 
 }

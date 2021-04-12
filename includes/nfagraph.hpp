@@ -32,6 +32,9 @@ namespace NFA{
         //returns a map containing each node index as a key, and the associated epsilon closure as a value
         std::map<uint, std::set<uint>> epsilonClosure();
 
+        static Graph fuseNewBranch(Graph const& first, Graph const& second);
+
+
     private:
 
         bool valid(uint node);

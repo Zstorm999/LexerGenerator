@@ -51,6 +51,45 @@ bool Graph::valid(uint node){
     return node < nodes.size();
 }
 
+Graph Graph::fuseNewBranch(Graph const& first, Graph const& second){
+
+
+    if(first.nodes.size() == 0 ) return second;
+    if(second.nodes.size() == 0) return first;
+
+    Graph newGraph;
+    Graph const* poldGraph;
+
+    //iterating on the second graph will be quicker
+    if(first.nodes.size() > second.nodes.size()){
+        newGraph = first;
+        poldGraph = &second;
+    }
+    else{
+        newGraph = second;
+        poldGraph = &first;
+
+    }
+
+    size_t offset = newGraph.nodes.size();
+
+    //append second graph at the end of the first;
+    for(size_t i = 0; i < poldGraph->nodes.size(); i++){
+        Node n = poldGraph->nodes[i];
+
+        for(auto it = n.nextStates.begin(); it != n.nextStates.end(); it++){
+            it->nextID += offset;
+        }
+
+        newGraph.nodes.push_back(n);
+    }
+
+    //linking the graphs via an epsilon transition
+    newGraph.addTransition(0, offset);
+
+    return newGraph;
+}
+
 Graph::Node::Node(){
 
 }
