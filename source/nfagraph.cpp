@@ -1,20 +1,20 @@
-#include "nfatree.hpp"
+#include "nfagraph.hpp"
 
 #include <algorithm>
 
 using namespace NFA;
 using namespace std;
 
-Tree::Tree()
+Graph::Graph()
 {
 
 }
 
-void Tree::addNode(string token){
+void Graph::addNode(string token){
     nodes.push_back(Node(token));
 }
 
-void Tree::addTransition(uint start, uint end){
+void Graph::addTransition(uint start, uint end){
 
     if(!valid(start))
         throw TreeException("given start node does not belong to the tree!");
@@ -25,7 +25,7 @@ void Tree::addTransition(uint start, uint end){
     nodes[start].addNext(end);
 }
 
-void Tree::addTransition(uint start, uint end, char letter){
+void Graph::addTransition(uint start, uint end, char letter){
 
     if(!valid(start))
         throw TreeException("given start node does not belong to the tree!");
@@ -36,33 +36,32 @@ void Tree::addTransition(uint start, uint end, char letter){
     nodes[start].addNext(end, letter);
 }
 
-Tree::Node& Tree::getNode(uint id){
+Graph::Node& Graph::getNode(uint id){
 
     if(!valid(id))
         throw TreeException("given node does not belong to the tree!");
 
     return nodes[id];
 }
-int Tree::getNextID(){
+int Graph::getNextID(){
     return nodes.size();
 }
 
-
-bool Tree::valid(uint node){
+bool Graph::valid(uint node){
     return node < nodes.size();
 }
 
-Tree::Node::Node(){
+Graph::Node::Node(){
 
 }
 
-Tree::Node::Node(string const& token):
+Graph::Node::Node(string const& token):
     finalToken(token)
 {
 
 }
 
-void Tree::Node::addNext(int next){
+void Graph::Node::addNext(int next){
     Transition t;
     t.isEpsilon = true;
     t.letter = 0;
@@ -71,7 +70,7 @@ void Tree::Node::addNext(int next){
     nextStates.push_back(t);
 }
 
-void Tree::Node::addNext(int next, char letter){
+void Graph::Node::addNext(int next, char letter){
     Transition t;
     t.isEpsilon = false;
     t.letter = letter;
@@ -82,28 +81,39 @@ void Tree::Node::addNext(int next, char letter){
 
 //-------------------------------------------------------------------
 
-map<uint, set<uint>> Tree::epsilonClosure(){
+map<uint, set<uint>> Graph::epsilonClosure(){
     map<uint, set<uint>> m;
     
     bool stable;
+    std::set<uint> done;
 
-    //creating the base map: each closure contains at least its own element
+    //creating the base map: each closure contains at least its own element and direct epsilon transitions
     for(uint i = 0; i< nodes.size(); i++){
         set<uint> newSet = {i};
+        set<uint> trivial = {i};
 
-        set<uint> epsilonNext;
-
+        //checking for direct epsilon transitions
         for(auto it = nodes[i].nextStates.begin(); it != nodes[i].nextStates.end(); it++){
             if(it->isEpsilon){
                 newSet.insert(it->nextID);
             }
         }
 
+        //if element is trivial, its closure is already done
+        if(newSet == trivial){
+            done.insert(i);
+        }
+
         m.insert(make_pair(i, newSet));
 
     }
 
-    std::set<uint> done;
+    if(done.size() == nodes.size()){
+        //we have a DFA ! no need to go further
+        return m;
+    }
+
+    
 
     do{
 

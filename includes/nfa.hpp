@@ -5,7 +5,7 @@
 #include <map>
 
 #include "dfa.hpp"
-#include "nfatree.hpp"
+#include "nfagraph.hpp"
 
 namespace NFA{
 
@@ -13,12 +13,14 @@ namespace NFA{
     public:
         Automaton();
 
+        Graph getStates();
+
         void AddRegex(std::string regex);
         DFA::Automaton MakeDeterministic();
     
     private:
 
-        NFA::Tree graph; 
+        NFA::Graph graph; 
     };
 
 }

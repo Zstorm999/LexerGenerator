@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "automaton.hpp"
+#include "dfa.hpp"
 
 int main(void){
 

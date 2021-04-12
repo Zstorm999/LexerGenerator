@@ -12,11 +12,11 @@
 namespace NFA{
 
 
-    class Tree{
+    class Graph{
     public:
         struct Node;
 
-        Tree();
+        Graph();
 
         void addNode(std::string token="");
 
@@ -29,6 +29,7 @@ namespace NFA{
         //returns the ID that will be attributed to the next node added in the tree
         int getNextID();
 
+        //returns a map containing each node index as a key, and the associated epsilon closure as a value
         std::map<uint, std::set<uint>> epsilonClosure();
 
     private:
@@ -39,7 +40,7 @@ namespace NFA{
     };
 
     
-    struct Tree::Node{   
+    struct Graph::Node{   
 
         struct Transition{
             bool isEpsilon;

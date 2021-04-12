@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "nfatree.hpp"
+#include "nfagraph.hpp"
 
 #include <algorithm>
 
@@ -7,7 +7,7 @@ using namespace NFA;
 
 TEST(TreeTest, exceptions){
 
-    Tree t;
+    Graph t;
 
     ASSERT_ANY_THROW(t.getNode(0));
     ASSERT_ANY_THROW(t.addTransition(0, 0));
@@ -22,7 +22,7 @@ TEST(TreeTest, exceptions){
 
 
 TEST(TreeTest, eclosureEmpty){
-    Tree t;
+    Graph t;
     t.addNode();
 
     std::map<uint, std::set<uint>> closure = t.epsilonClosure();
@@ -30,11 +30,27 @@ TEST(TreeTest, eclosureEmpty){
     std::set<uint> expected = {0};
 
     ASSERT_EQ(closure.size(), 1);
-    ASSERT_TRUE(closure[0] == expected);
+    ASSERT_EQ(closure[0], expected);
+}
+
+TEST(TreeTest, eclosureTrivial){
+
+    Graph t;
+
+    for(int i = 0; i < 10; i++) t.addNode();
+
+    std::map<uint, std::set<uint>> closure = t.epsilonClosure();
+
+    ASSERT_EQ(closure.size(), 10);
+
+    for(uint i=0; i<10; i++){
+        std::set<uint> expected = {i};
+        EXPECT_EQ(closure[i], expected); 
+    }
 }
 
 TEST(TreeTest, eclosureSimple){
-    Tree t;
+    Graph t;
     t.addNode();
     t.addNode();
     t.addTransition(0, 1);
@@ -55,7 +71,7 @@ TEST(TreeTest, eclosureSimple){
 
 TEST(TreeTest, eclosureLoop){
 
-    Tree t;
+    Graph t;
     t.addNode();
     t.addNode();
     t.addTransition(0, 1);
@@ -73,7 +89,7 @@ TEST(TreeTest, eclosureLoop){
 }
 
 TEST(TreeTest, eclosureNested){
-    Tree t;
+    Graph t;
     t.addNode();
     t.addNode();
     t.addNode();
@@ -93,7 +109,7 @@ TEST(TreeTest, eclosureNested){
 }
 
 TEST(TreeTest, eclosureLoopNested){
-    Tree t;
+    Graph t;
     t.addNode();
     t.addNode();
     t.addNode();
@@ -114,7 +130,7 @@ TEST(TreeTest, eclosureLoopNested){
 
 TEST(TreeTest, eclosureReal){
     //Ex 2.2 from 'Basics of Compiler Design' by T. Mogensen
-    Tree t;
+    Graph t;
     
     for(int i = 0; i< 7; i++) t.addNode();
     t.addNode("final");
@@ -149,3 +165,4 @@ TEST(TreeTest, eclosureReal){
     }
 
 }
+
