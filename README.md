@@ -2,7 +2,29 @@
 A C++ program that generates a lexer based on an input language.
 
 ## Input language
-You can not specify an input language at the time, this will be modified in the future.
+Input is based on regex (regular expressions). The following conventions apply for the notation of such expressions :
+
+* `a` matches the letter 'a'
+* `st` matches the string s, followed by the string t
+* `s|t` matches the string s or the string t
+* `s*` matches any number of occurrence of the string s, including 0
+* `s+` matches one or more occurrence of the string s
+
+All previously mentioned strings can indeed refer themselves to regular expressions. Priority rules are : 
+
+1. You can put parenthesis to prioritize any expression over another. Parenthesis are always evaluated first.
+2. `*` and `+` prioritize over other symbols,
+3. Then `|`,
+4. Finally single letters are evaluated,
+
+This convention can introduce some problem, in particular when one wants to define a language containing any of the "operator characters". That's why the escape character `\` is defined.
+You can use it different ways:
+
+1. To escape previously mentioned characters, simply write `\` followed by the character you want (for example `\*`). You can also escape parenthesis this way.
+2. `\` itself can be escaped using another `\` in front of it, i.e. `\\`.
+3. Standard C notation for non-printable characters apply, such as `\n` for a new line or `\t` for a tabulation.
+4. You can escape a single white space by writing `'\ '` if you ever need to. 
+ 
 
 ## Output and restoring DFA
 This projects works with internal DFA (Deterministic Finite Automata). You do not need to know what they are in order to use the generator, but you should know how they are stored in files: 
