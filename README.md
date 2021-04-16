@@ -20,10 +20,10 @@ All previously mentioned strings can indeed refer themselves to regular expressi
 This convention can introduce some problem, in particular when one wants to define a language containing any of the "operator characters". That's why the escape character `\` is defined.
 You can use it different ways:
 
-1. To escape previously mentioned characters, simply write `\` followed by the character you want (for example `\*`). You can also escape parenthesis this way.
-2. `\` itself can be escaped using another `\` in front of it, i.e. `\\`.
+1. To escape previously mentioned characters, simply write `\` followed by the character you want (for example '\\*'). You can also escape parenthesis this way.
+2. `\` itself can be escaped using another `\` in front of it, i.e. '\\\\'.
 3. Standard C notation for non-printable characters apply, such as `\n` for a new line or `\t` for a tabulation.
-4. You can escape a single white space by writing `'\ '` if you ever need to. 
+4. You can escape a single white space by writing '\ ' if you ever need to. 
  
 
 ## Output and restoring DFA
